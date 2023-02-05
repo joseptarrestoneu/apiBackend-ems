@@ -14,3 +14,4 @@
   - Afegir npm mongoose: npm i mongoose
   - Afegir npm multer: npm i multer
   - Afegir npm path: npm i path
+  - Afegir nom dotenv: npm i dotenv
