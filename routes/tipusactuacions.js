@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const tipusactuacioController = require('../controllers/tipusActuacions')
+const tipusactuacioController = require('../controllers/tipusActuacio')
 
 // GET TIPUS ACTUACIÓ
 router.get('/', tipusactuacioController.getAllTipus)
