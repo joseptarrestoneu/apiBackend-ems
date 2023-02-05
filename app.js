@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const cors = require('cors')
 const mongoose = require('mongoose')
+const routes = require('./routes/index')
 
 var app = express()
 
