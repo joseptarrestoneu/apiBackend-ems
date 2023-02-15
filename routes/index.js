@@ -1,5 +1,6 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express')
+const passport = require('passport')
+var router = express.Router()
 
 const userRoutes = require('./users')
 const rolRoutes = require('./rols')
@@ -12,18 +13,22 @@ const dimensioRoutes = require('./dimensions')
 const actuacioRoutes = require('./actuacions')
 const paiRoutes = require('./pais')
 const operationRoutes = require('./operations')
+const signupRoutes = require('./signup')
+const loginRoutes = require('./login')
 
 router
-  .use("/users", userRoutes)
-  .use("/rols", rolRoutes)
-  .use("/usuaris", usuariRoutes)
-  .use("/serveis", serveiRoutes)
-  .use("/tasks", taskRoutes)
-  .use("/tipusactuacions", tipusactuacionsRoutes)
-  .use("/seguiments", seguimentRoutes)
-  .use("/dimensions", dimensioRoutes)
-  .use("/actuacions", actuacioRoutes)
-  .use("/pais", paiRoutes)
-  .use("/operations", operationRoutes)
+  .use("/users",  passport.authenticate('jwt', { session: false }), userRoutes)
+  .use("/rols", passport.authenticate('jwt', { session: false }), rolRoutes)
+  .use("/usuaris", passport.authenticate('jwt', { session: false }), usuariRoutes)
+  .use("/serveis", passport.authenticate('jwt', { session: false }), serveiRoutes)
+  .use("/tasks", passport.authenticate('jwt', { session: false }), taskRoutes)
+  .use("/tipusactuacions", passport.authenticate('jwt', { session: false }), tipusactuacionsRoutes)
+  .use("/seguiments", passport.authenticate('jwt', { session: false }), seguimentRoutes)
+  .use("/dimensions", passport.authenticate('jwt', { session: false }), dimensioRoutes)
+  .use("/actuacions", passport.authenticate('jwt', { session: false }), actuacioRoutes)
+  .use("/pais", passport.authenticate('jwt', { session: false }), paiRoutes)
+  .use("/operations", passport.authenticate('jwt', { session: false }), operationRoutes)
+  .use('/', passport.authenticate('jwt', { session: false }), signupRoutes)
+  .use('/', passport.authenticate('jwt', { session: false }), loginRoutes)
 
 module.exports = router

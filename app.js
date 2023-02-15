@@ -5,6 +5,8 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const cors = require('cors')
+const passport = require('passport')
+const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const routes = require('./routes/index')
 
@@ -12,6 +14,7 @@ var app = express()
 
 // Connect to DDBB Ems
 const mongoUrl = process.env.URL
+console.log('url', mongoUrl)
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(x => {
     console.log('Connect to DDBB Ems')
@@ -19,6 +22,9 @@ mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
   .catch(error => {
     console.error('error', error)
   })
+
+// Autentificacio
+require('./middleware/auth')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -30,6 +36,8 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(cors())
+
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(routes)
 

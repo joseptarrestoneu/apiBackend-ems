@@ -14,4 +14,11 @@
   - Afegir npm mongoose: npm i mongoose
   - Afegir npm multer: npm i multer
   - Afegir npm path: npm i path
-  - Afegir nom dotenv: npm i dotenv
+  - Afegir npm dotenv: npm i dotenv
+6. Instal·lar dependencies per login i signin
+  - Afegir npm bcrypt: npm i bcrypt
+  - Afegir npm body-parser: npm i body-parser
+  - Afegir npm jsonwebtoken: npm i jsonwebtoken
+  - Afegir npm passport: npm i passport
+  - Afegir npm passport-jwt: npm i passport-jwt
+  - Afegir npm passport-local: npm i passport-local
